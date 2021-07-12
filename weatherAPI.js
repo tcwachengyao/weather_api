@@ -21,13 +21,52 @@ fetch (weather_url)
                 let weather_type = this_city_data.elementName; //氣象名
                 let inner_this_main = all_content.querySelector('.main');
                 let weather_time = this_city_data.time; //氣象
-                let type_name = ['天氣','降雨率','最低溫度','舒適度','最高溫度']
+                let type_name = ['-天氣','-降雨率','-最低溫度','-舒適度','-最高溫度'];
+                let time_type = ['開始:','結束:'];
                 inner_this_main.innerHTML += 
                     `<p>${weather_type}${type_name[idx]}</p>
                     <ul>
-                        <li>
-                            ${weather_time[1].parameter.parameterName}
-                        </li>
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        ${time_type[0]}${weather_time[0].startTime}
+                                    </li>
+                                    <li>
+                                        ${weather_time[0].parameter.parameterName}
+                                    </li>
+                                    <li>
+                                        ${time_type[1]}${weather_time[0].endTime}
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        ${time_type[0]}${weather_time[1].startTime}
+                                    </li>
+                                    <li>
+                                        ${weather_time[1].parameter.parameterName}
+                                    </li>
+                                    <li>
+                                        ${time_type[1]}${weather_time[1].endTime}
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <ul>
+                                    <li>
+                                        ${time_type[0]}${weather_time[2].startTime}
+                                    </li>
+                                    <li>
+                                        ${weather_time[2].parameter.parameterName}
+                                    </li>
+                                    <li>
+                                        ${time_type[1]}${weather_time[2].endTime}
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
                     </ul>`;
             });
         });
